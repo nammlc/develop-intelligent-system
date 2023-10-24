@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	 version="4.0">
+    <welcome-file-list>
+        <welcome-file>home.jsp</welcome-file>
+    </welcome-file-list>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <servlet>
+        <servlet-name>FilmController</servlet-name>
+        <servlet-class> controller.FilmController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FilmController</servlet-name>
+        <url-pattern>/filmcontroller</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchFilmController</servlet-name>
+        <servlet-class> controller.SearchFilmController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchFilmController</servlet-name>
+        <url-pattern>/client/searchfilmcontroller</url-pattern>
+    </servlet-mapping>
+        
+</web-app>
