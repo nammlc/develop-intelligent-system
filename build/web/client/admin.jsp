@@ -1,9 +1,9 @@
 <%@page import="model.label"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page import="dao.labelDAO" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
 <!DOCTYPE html>
@@ -85,7 +85,7 @@
         }
 
         .label--list__name h2{
-            margin: 0;
+            margin-top: 10px;
         }
 
         .label--list__icon-search{
@@ -122,8 +122,8 @@
     <header>
         <div class="logo">Trang quản trị</div>
         <ul class="menu">
-            <li><a href="#">Trang Chủ</a></li>
-            <li><a href="#">Dự Án</a></li>
+            <li><a href="admin.jsp">Trang Chủ</a></li>
+            <li><a href="home.jsp">Dự Án</a></li>
             <li><a href="#">Quản lý mẫu</a></li>
             <li><a href="#">Quản lý nhãn</a></li>
         </ul>
@@ -131,18 +131,24 @@
     <div class="container">
         <div class="sidebar">
             <ul>
-                <li><a href="#">Quản lý nhãn</a></li>
-                <li><a href="#">Quản lý mẫu</a></li>
-                <li><a href="#">Quản lý model</a></li>
+                <li style="margin-left: 25%" ><a href="#">Quản lý nhãn</a></li>
+                <li style="margin-left: 25%"><a href="#">Quản lý mẫu</a></li>
+                <li style="margin-left: 25%"><a href="#">Quản lý model</a></li>
             </ul>
         </div>
         <div class="label--list">
             <div class="label--list-header">
                 <div class="label--list__name">
+                    <a href="add-label.jsp" style="margin-bottom: 10px"> Thêm nhãn</a>
+                  
                     <h2>Danh sách nhãn</h2>
                 </div>
                 <div class="label--list__icon-search">
-                    <a><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a title="Tìm nhãn theo tên" style="display:flex"  >
+                        <form action="../client/searchlabel" method="get">
+                            <input type="text" name="name"  placeholder="Nhập tên nhãn cần tìm" style="padding : 5px ; border-radius: 5px" >
+                        </form>
+                        <i class="fa-solid fa-magnifying-glass" style="margin-top: 3px ; margin-left: 5px ; font-size: 1.4rem"></i></a>
                 </div>
             </div>
             

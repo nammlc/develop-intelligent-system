@@ -3,40 +3,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
+import java.io.*;
+import java.sql.Timestamp;
 
 /**
  *
  * @author Admin
  */
 public class label {
-    public String name, describee,imgdes,daycreate ,labelID;
-    public int sumofsample;
+    public String name, des ;
+    int labelID;
+    Timestamp daycreate;
     
-    public label(String labelID, String name, String describee, int sumofsample, String imgdes, String daycreate){
+    public label(int labelID, String name, String des,  Timestamp  daycreate){
         this.labelID = labelID;
         this.name = name;
-        this.describee = describee;
-        this.sumofsample = sumofsample;
-        this.imgdes = imgdes;
+        this.des = des;
         this.daycreate = daycreate;
     }
     
-    public String getLabelID(){
+    public int getLabelID(){
         return labelID;
     }
     public String getName(){
         return name;
     }
-    public String getDescribe(){
-        return describee;
+    public String getDes(){
+        return des;
     }
-    public String getImgdes(){
-        return imgdes;
-    }
-    public int getSumofsample(){
-        return sumofsample;
-    }
-    public String getDaycreate(){
+    public Timestamp getDaycreate(){
         return daycreate;
     }
     

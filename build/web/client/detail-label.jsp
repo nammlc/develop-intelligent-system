@@ -6,7 +6,6 @@
 <%@page import="dao.labelDAO"%>
 <%@page import="model.label"%>
 <%@page import="java.util.ArrayList"%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -116,8 +115,9 @@
                 background-color: #007BFF;
                 color: #fff;
                 border: none;
-                padding: 10px 20px;
+                padding: 5px 10px;
                 cursor: pointer;
+                border-radius: 5px;
             }
             .label--des{
                 margin-top: 20px;
@@ -132,8 +132,8 @@
         <header>
             <div class="logo">Trang quản trị</div>
             <ul class="menu">
-                <li><a href="#">Trang Chủ</a></li>
-                <li><a href="#">Dự Án</a></li>
+                <li><a href="admin.jsp">Trang Chủ</a></li>
+                <li><a href="home.jsp">Dự Án</a></li>
                 <li><a href="#">Quản lý mẫu</a></li>
                 <li><a href="#">Quản lý nhãn</a></li>
             </ul>
@@ -141,9 +141,9 @@
         <div class="container">
             <div class="sidebar">
                 <ul>
-                    <li><a href="#">Quản lý nhãn</a></li>
-                    <li><a href="#">Quản lý mẫu</a></li>
-                    <li><a href="#">Quản lý model</a></li>
+                    <li style="margin-left: 25%"><a href="#">Quản lý nhãn</a></li>
+                    <li style="margin-left: 25%"><a href="#">Quản lý mẫu</a></li>
+                    <li style="margin-left: 25%"><a href="#">Quản lý model</a></li>
                 </ul>
             </div>
             <div class="label--list">
@@ -161,19 +161,21 @@
                         <tr>
                             <th class="table-head">ID</th>
                             <th class="table-head">Tên</th>
-                            <th class="table-head">Tổng mẫu gán với nhãn</th>
+                            
                             <th class="table-head">Ngày thêm nhãn</th>
                             <th class="table-head">Thao tác</th>
+
+
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="table-column">${label.getLabelID()}</td>
                             <td class="table-column">${label.getName()}</td>
-                            <td class="table-column">${label.getSumofsample()}</td>
+                           
                             <td class="table-column">${label.getDaycreate()}</td>
-                            <td class="table-column"><td class="table-column">
-                                <form action="../client/editlabelcontroller" method="get">
+                            <td class="table-column" style="display: flex ; justify-content: center">
+                                <form action="../client/editlabelcontroller" method="get" style="width: 30%">
                                     <input type="hidden" name="labelID" value="${label.getLabelID()}">
                                     <button class="button-choice" type="submit">Sửa</button>
                                 </form>
@@ -181,8 +183,8 @@
 
 
 
-                                <button class="button-choice" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Xóa</button>
-
+                                <button class="button-choice" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-right: 5px">Xóa</button>
+                            <td class="table-column">
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -210,12 +212,9 @@
                     </tbody>
                 </table>
                 <div class="label--des">
-                    <div class="lebel-imgdes">
-                        <div class=""> Ảnh mô tả nhãn</div>
-                        <img src="${label.getImgdes()}" alt="" style="width: 350px; height: 250px;"> 
-                    </div>
+            
                     <div class="label-des">
-                        <p>${label.getDescribe()}</p>
+                        <p>Mô tả : ${label.getDes()}</p>
                     </div>
                 </div>
 

@@ -64,10 +64,10 @@ public class filmDAO {
     }
     public static List<film> searchFilms(String name){
         List<film> films = new ArrayList<>();
-        String query = "SELECT * FROM film WHERE name = ?";
+        String query = "SELECT * FROM film WHERE name LIKE ?";
         try (Connection c = openConnection()) {
         PreparedStatement statement = c.prepareStatement(query);
-        statement.setString(1, name);
+        statement.setString(1, "%"+name+"%");
         ResultSet rs = statement.executeQuery();
         
         while (rs.next()) {

@@ -4,8 +4,15 @@
  */
 package dao;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.*;
 import java.util.*;
+import javax.servlet.http.Part;
 import model.label;
 
 /**
@@ -34,7 +41,7 @@ public class labelDAO {
         return conn;
     }
 
-    public static List<label> getAllLabels() {
+    public static List<label> getAllLabels() throws FileNotFoundException, IOException {
         List<label> labels = new ArrayList<>();
         String query = "SELECT * FROM labels";
 
@@ -45,12 +52,11 @@ public class labelDAO {
             while (rs.next()) {
                 String id = rs.getString("labelID");
                 String name = rs.getString("name");
-                String describee = rs.getString("describee");
-                String imgdes = rs.getString("imgdes");
-                int sumofsample = rs.getInt("sumofsample");
-                String daycreate = rs.getString("daycreate");
+                String des = rs.getString("des");
 
-                label Label = new label(id, name, describee, sumofsample, imgdes, daycreate);
+                Timestamp daycreate = rs.getTimestamp("daycreate");
+
+                label Label = new label(Integer.parseInt(id), name, des, daycreate);
                 labels.add(Label);
             }
         } catch (SQLException e) {
@@ -61,7 +67,7 @@ public class labelDAO {
         return labels;
     }
 
-    public static label getLabel(String labelID) {
+    public static label getLabel(int labelID) throws IOException {
         Connection c = openConnection();
         if (c == null) {
             // Xử lý khi không thể kết nối đến CSDL
@@ -71,17 +77,15 @@ public class labelDAO {
         try {
             String query = "SELECT * FROM labels WHERE labelID = ?";
             PreparedStatement ps = c.prepareStatement(query);
-            ps.setString(1, labelID);
+            ps.setInt(1, labelID);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                label Label = new label(
-                        rs.getString("labelID"),
-                        rs.getString("name"),
-                        rs.getString("describee"),
-                        rs.getInt("sumofsample"),
-                        rs.getString("imgdes"),
-                        rs.getString("daycreate")
-                );
+                int id = rs.getInt("labelID");
+                String name = rs.getString("name");
+                String des = rs.getString("des");
+
+                Timestamp daycreate = rs.getTimestamp("daycreate");
+                label Label = new label(id, name, des, daycreate);
                 return Label;
             } else {
                 return null;
@@ -100,11 +104,11 @@ public class labelDAO {
         return null;
     }
 
-    public static boolean deleteLabel(String id) {
+    public static boolean deleteLabel(int id) {
         try (Connection c = openConnection()) {
             String insert = "DELETE FROM labels WHERE labelID = ?";
             PreparedStatement ps = c.prepareStatement(insert);
-            ps.setString(1, id);
+            ps.setInt(1, id);
             ps.executeUpdate();
             return true;
         } catch (Exception e) {
@@ -114,15 +118,12 @@ public class labelDAO {
         return false;
     }
 
-    public static boolean updateLabel(label a) {
+    public static boolean addLabel(String name, String des) {
         try (Connection c = openConnection()) {
-            String update = "UPDATE labels SET name=?, describee=?, imgdes=? WHERE labelID=?";
-            PreparedStatement ps = c.prepareStatement(update);
-            ps.setString(1, a.getName());
-            ps.setString(2, a.getDescribe());
-            ps.setString(3, a.getImgdes());
-            ps.setString(4, a.getLabelID()); // Thêm labelID để xác định bản ghi cần cập nhật.
-
+            String add = "INSERT INTO labels(name,des) VALUES (?,?) ";
+            PreparedStatement ps = c.prepareStatement(add);
+            ps.setString(1, name);
+            ps.setString(2, des);
             ps.executeUpdate();
             return true;
         } catch (Exception e) {
@@ -131,11 +132,52 @@ public class labelDAO {
         return false;
     }
 
-    public static void main(String[] args) {
+    public static boolean updateLabel(int labelID, String name, String des) {
+        try (Connection c = openConnection()) {
+            String update = "UPDATE labels SET name = ?, des = ?   WHERE labelID = ? ";
+            PreparedStatement ps = c.prepareStatement(update);
+            ps.setString(1, name);
+            ps.setString(2, des);
+            ps.setInt(3, labelID);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static List<label> searchLabels(String name) {
+        List<label> labels = new ArrayList<>();
+        String query = "SELECT * FROM labels WHERE name LIKE ?";
+        try (Connection c = openConnection()) {
+            PreparedStatement statement = c.prepareStatement(query);
+            statement.setString(1, "%" + name + "%");
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("labelID");
+                String namee = rs.getString("name");
+                String des = rs.getString("des");
+                Timestamp daycreate = rs.getTimestamp("daycreate");
+                
+
+                label filmss = new label(id, namee, des, daycreate);
+                labels.add(filmss);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("can't connect to mysql");
+        }
+
+        return labels;
+    }
+
+    public static void main(String[] args) throws IOException {
         labelDAO LabelDAO = new labelDAO();
-        List<label> list = labelDAO.getAllLabels();
+        List<label> list = labelDAO.searchLabels("cl");
         for (label a : list) {
-            System.out.println(a.getLabelID() + " " + a.getImgdes() + " " + a.getDaycreate());
+            System.out.println(a.getLabelID() + " " + a.getDes());
         }
     }
 }

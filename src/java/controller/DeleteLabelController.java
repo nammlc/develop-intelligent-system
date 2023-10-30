@@ -59,7 +59,7 @@ public class DeleteLabelController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = request.getParameter("labelID");
-        labelDAO.deleteLabel(id);
+        labelDAO.deleteLabel(Integer.parseInt(id));
         response.sendRedirect("admin.jsp");
     }
 

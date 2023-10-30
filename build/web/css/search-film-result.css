@@ -205,7 +205,6 @@ body {
 
 .poster--film__des{
     height: 200px;
-    overflow: scroll;
     font-size: 1rem;
 }
 

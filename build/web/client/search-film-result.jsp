@@ -1,6 +1,8 @@
 <%@page import="dao.filmDAO"%>
 <%@page import="model.film"%>
 <%@page import="java.util.ArrayList"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -26,21 +28,21 @@
             </div>
             <div class="navigation">
                 <ul class="list">
-                    <li class="list-header"><a href="#" class="list-header_link">Trang ch?</a></li>
+                    <li class="list-header"><a href="#" class="list-header_link">Trang ch·ªß</a></li>
                     <li class="list-header">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
                                     data-bs-toggle="dropdown" aria-expanded="false"
                                     style="background-color: rgb(19, 18, 18); border: none; margin-top: -6px;">
-                                Th? lo?i phim
+                                Th·ªÉ lo·∫°i phim
                             </button>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2"
                                 style="border-right: 10px;">
-                                <li style="margin: 0;"><a class="dropdown-item active" href="#">Phim b?</a></li>
-                                <li style="margin: 0;"><a class="dropdown-item" href="#">Phim h‡nh ??ng</a></li>
-                                <li style="margin: 0;"><a class="dropdown-item" href="#">Phim tÏnh c?m</a></li>
+                                <li style="margin: 0;"><a class="dropdown-item active" href="#">Phim b·ªô</a></li>
+                                <li style="margin: 0;"><a class="dropdown-item" href="#">Phim h√†nh ƒë·ªông</a></li>
+                                <li style="margin: 0;"><a class="dropdown-item" href="#">Phim t√¨nh c·∫£m</a></li>
                                 <li style="margin: 0;"><a class="dropdown-item" href="#">Phim 18+</a></li>
-                                <li style="margin: 0;"><a class="dropdown-item" href="#">Phim m?i c?p nh?t</a></li>
+                                <li style="margin: 0;"><a class="dropdown-item" href="#">Phim m·ªõi c·∫≠p nh·∫≠t</a></li>
 
                             </ul>
                         </div>
@@ -51,13 +53,13 @@
                             <i class="fa-solid fa-magnifying-glass" style="color: aliceblue;"></i>
 
                             <div class="search_film-list" id="search_form">
-                                <form action="/searchfilmcontroller" method="get">
-                                    <input type="text" name="" id="search_form_name" placeholder="Nh?p TÍn Phim">
+                                <form action="..client/searchfilmcontroller" method="get">
+                                    <input type="text" name="" id="search_form_name" placeholder="Nh?p T√™n Phim">
                                 </form>
                             </div>
                         </a>
                     </li>
-                    <li class="list-header"><a href="login.html" class="list-header_link">??ng nh?p</a></li>
+                    <li class="list-header"><a href="login.html" class="list-header_link">ƒêƒÉng nh·∫≠p</a></li>
                     <!-- <input type="search" name="search" id="" placeholder="find your film"> -->
                 </ul>
             </div>
@@ -67,10 +69,10 @@
                 <div class="containner-menu" style="width: 15%;">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="#">Phim m?i</a>
-                        <a href="#">Phim h‡nh ??ng</a>
+                        <a href="#">Phim m·ªõi</a>
+                        <a href="#">Phim h√†nh ƒë·ªông</a>
                         <a href="#">Phim 18+</a>
-                        <a href="#">Phim tÏnh c?m</a>
+                        <a href="#">Phim t√¨nh c·∫£m</a>
                     </div>
 
                     <span style="font-size:30px;cursor:pointer ; margin-left: 10px;" onclick="openNav()">&#9776;
@@ -80,7 +82,7 @@
                     <div class="grid-column" style=" display: flex;">
                         <div class="film-sreach-result" style="width: 70%;">
                             <div class="film--header">
-                                <div class="film-type" style=" font-weight: 600;">K?t qu? tÏm ki?m :
+                                <div class="film-type" style=" font-weight: 600;">K·∫øt qu·∫£ t√¨m ki·∫øm :
                                 </div>
                             </div>
                             <div class="grid_row">
@@ -88,8 +90,8 @@
                                     <a href="detail-film.jsp" style="width: 23%;" class="poster--film">
                                         <div class="poster--film__img">
                                             <img src=" ${film.imglink}" alt=""
-                                        style="width: 140px;">
-        
+                                                 style="width: 140px;">
+
                                         </div>
                                         <div class="poster--film__img--play-icon">
                                             <i class="fa-solid fa-play"></i>
@@ -100,54 +102,19 @@
                                             <h1> ${film.name}</h1>
                                         </div>
                                         <div class="poster--film__des">
-                                            <p>
-                                                Loki: Ph?n 2 ? Loki Season 2 (2023) khi Steve Rogers, Tony Stark v‡ Scott Lang
-                                                quay tr? v? c?t m?c 2012, ngay khi tr?n chi?n ? New York k?t th˙c, ?? ?m??n t?m?
-                                                quy?n tr??ng c?a Loki. Nh?ng m?t tai n?n b?t ng? x?y ??n, khi?n Loki nh?t ???c
-                                                kh?i l?p ph??ng Tesseract v‡ ti?n th? t?u tho·t.
-                                            </p>
-                                            <p>
-                                                Cu?c tr?n tho·t n‡y ?„ d?n ??n dÚng th?i gian b? r?i lo?n. C?c TVA ? t? ch?c b?o
-                                                v? tÌnh nguyÍn v?n c?a dÚng ch?y th?i gian, bu?c ph?i can thi?p, ?i gÙ c? Ùng
-                                                th?n n‡y v? l‡m vi?c. T?i ?‚y, Loki cÛ hai l?a ch?n, m?t l‡ gi˙p TVA ?n ??nh l?i
-                                                th?i gian, khÙng thÏ b? tiÍu h?y. D? nhiÍn Loki ch?n l?a ch?n th? nh?t. Nh?ng
-                                                ?‚y l‡ n??c ?i vÙ c˘ng m?o hi?m, vÏ Ùng th?n n‡y th??ng l?c l?a, ?l??n l?o?,
-                                                chuyÍn ?‚m lÈn nh? b?n tÌnh t? nhiÍn c?a g„.
-                                            </p>
+                                            <p>${film.filmtype}</p>
+                                            <p>ƒê·ªô tu·ªïi : ${film.label}</p>
+                                            <p>Th·ªùi gian : ${film.timeremain} ph√∫t</p>
+
                                         </div>
 
                                     </div>
                                 </c:forEach>
                             </div>
-                            <div class="grid_row" style="margin-top: 20px;">
-                                <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="padding: 0">
-                                    <div class="container-fluid" style="background-color: #111;">
-                                        <a class="navbar-brand" href="#" style="color: aliceblue;" id="film-info">ThÙng
-                                            tin</a>
-                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                                                aria-label="Toggle navigation">
-                                            <span class="navbar-toggler-icon"></span>
-                                        </button>
-                                        <div class="collapse navbar-collapse" id="navbarNav">
-                                            <ul class="navbar-nav">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" aria-current="page" href="#"
-                                                       style="color: aliceblue;" id="film-actor">Di?n ViÍn</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="#" style="color: aliceblue;"
-                                                       id="film-trailer">Trailer</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </nav>
-                                <div class="film-click" id="film-click"></div>
-                            </div>
+                            
                         </div>
                         <div class="film-search-relate" style="width: 20%; margin: 15px;">
-                            phim liÍn quan
+                            phim li√™n quan
                         </div>
                     </div>
                 </div>
@@ -170,40 +137,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-        <script>
-                        function openNav() {
-                            console.log("open");
-                            document.getElementById("mySidenav").style.width = "240px";
-                        }
-
-                        function closeNav() {
-                            document.getElementById("mySidenav").style.width = "0";
-                        }
-                        var film_info = document.getElementById("film-info");
-                        var film_actor = document.getElementById("film-actor");
-                        var film_trailer = document.getElementById("film-trailer");
-                        var film_click = document.getElementById("film-click");
-                        film_info.addEventListener("click", function () {
-                            console.log("click");
-
-                            film_click.innerHTML = `
-            
-                    <p>
-                        Loki: Ph?n 2 ? Loki Season 2 (2023) khi Steve Rogers, Tony Stark v‡ Scott Lang quay tr? v? c?t m?c 2012, ngay khi tr?n chi?n ? New York k?t th˙c, ?? ?m??n t?m? quy?n tr??ng c?a Loki. Nh?ng m?t tai n?n b?t ng? x?y ??n, khi?n Loki nh?t ???c kh?i l?p ph??ng Tesseract v‡ ti?n th? t?u tho·t.
-                    </p>
-                    <p>
-                    Cu?c tr?n tho·t n‡y ?„ d?n ??n dÚng th?i gian b? r?i lo?n. C?c TVA ? t? ch?c b?o v? tÌnh nguyÍn v?n c?a dÚng ch?y th?i gian, bu?c ph?i can thi?p, ?i gÙ c? Ùng th?n n‡y v? l‡m vi?c. T?i ?‚y, Loki cÛ hai l?a ch?n, m?t l‡ gi˙p TVA ?n ??nh l?i th?i gian, khÙng thÏ b? tiÍu h?y. D? nhiÍn Loki ch?n l?a ch?n th? nh?t. Nh?ng ?‚y l‡ n??c ?i vÙ c˘ng m?o hi?m, vÏ Ùng th?n n‡y th??ng l?c l?a, ?l??n l?o?, chuyÍn ?‚m lÈn nh? b?n tÌnh t? nhiÍn c?a g„.
-                    </p>
-            
-                `
-                        });
-                        film_trailer.addEventListener('click', function () {
-
-                            film_click.innerHTML = `
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/_hU9KqVfBuI?si=EWJJrmQ_RgjgYO-s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>            `
-                        });
-
-        </script>
+        
 
     </boby>
 

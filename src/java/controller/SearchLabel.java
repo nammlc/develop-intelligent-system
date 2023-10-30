@@ -7,6 +7,7 @@ package controller;
 import dao.labelDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +19,8 @@ import model.label;
  *
  * @author Admin
  */
-@WebServlet(name = "SelectLabelController", urlPatterns = {"/selectlabelcontroller"})
-public class SelectLabelController extends HttpServlet {
+@WebServlet(name = "SearchLabel", urlPatterns = {"/searchlabel"})
+public class SearchLabel extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +39,10 @@ public class SelectLabelController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SelectLabelController</title>");            
+            out.println("<title>Servlet SearchLabel</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SelectLabelController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SearchLabel at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,11 +60,11 @@ public class SelectLabelController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                String id = request.getParameter("labelID");
-                labelDAO lb = new labelDAO();
-                label Label = lb.getLabel(Integer.parseInt(id));
-                request.setAttribute("label", Label);
-                request.getRequestDispatcher("detail-label.jsp").forward(request, response);
+        String name = request.getParameter("name");
+        List<label> list = labelDAO.searchLabels(name);
+        request.setAttribute("key", name);
+        request.setAttribute("label",list);
+        request.getRequestDispatcher("search-label-result.jsp").forward(request, response);
     }
 
     /**

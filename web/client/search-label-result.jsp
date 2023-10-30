@@ -141,11 +141,12 @@
                 <div class="label--list__name">
                     <a href="add-label.jsp" style="margin-bottom: 10px"> Thêm nhãn</a>
                   
-                    <h2>Danh sách nhãn</h2>
+                    <h2>Kết quả tìm kiếm theo từ khóa "${key}"</h2>
                 </div>
                 <div class="label--list__icon-search">
                     <a title="Tìm nhãn theo tên" style="display:flex"  >
                         <form action="../client/searchlabel" method="get">
+                            
                             <input type="text" name="name"  placeholder="Nhập tên nhãn cần tìm" style="padding : 5px ; border-radius: 5px" >
                         </form>
                         <i class="fa-solid fa-magnifying-glass" style="margin-top: 3px ; margin-left: 5px ; font-size: 1.4rem"></i></a>
@@ -162,14 +163,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="label" items="<%= labelDAO.getAllLabels()%>">
+                <c:forEach var="label" items="${label}">
                     <tr>
-                        <td class="table-column"><c:out value="${label.getLabelID()}" /></td>
-                        <td class="table-column"><c:out value="${label.getName()}" /></td>
-                        <td class="table-column"><c:out value="${label.getDaycreate()}"/></td>
+                        <td class="table-column">${label.labelID}</td>
+                        <td class="table-column">${label.name}</td>
+                        <td class="table-column">${label.daycreate}</td>
                         <td class="table-column">
                             <form action="../client/selectlabelcontroller" method="get">
-                            <input type="hidden" name="labelID" value="${label.getLabelID()}">
+                            <input type="hidden" name="labelID" value="${label.labelID}">
                             <button class="button-choice" type="submit">Xem chi tiết</button>
                         </form></td>
                     </tr>
