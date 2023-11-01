@@ -7,6 +7,10 @@
         <servlet-name>SearchLabel</servlet-name>
         <servlet-class>controller.SearchLabel</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FilterFilmController</servlet-name>
+        <servlet-class>controller.FilterFilmController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddLabelController</servlet-name>
         <url-pattern>/client/addlabelcontroller</url-pattern>
@@ -15,19 +19,15 @@
         <servlet-name>SearchLabel</servlet-name>
         <url-pattern>/client/searchlabel</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterFilmController</servlet-name>
+        <url-pattern>/client/filterfilmcontroller</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    <servlet>
-        <servlet-name>FilmController</servlet-name>
-        <servlet-class> controller.FilmController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>FilmController</servlet-name>
-        <url-pattern>/filmcontroller</url-pattern>
-    </servlet-mapping>
     <servlet>
         <servlet-name>SearchFilmController</servlet-name>
         <servlet-class> controller.SearchFilmController</servlet-class>
@@ -40,7 +40,6 @@
         <servlet-name>AddLabelController</servlet-name>
         <servlet-class>controller.AddLabelController</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>SelectLabelController</servlet-name>
         <servlet-class> controller.SelectLabelController</servlet-class>
@@ -65,5 +64,12 @@
         <servlet-name>EditLabelController</servlet-name>
         <url-pattern>/client/editlabelcontroller</url-pattern>
     </servlet-mapping>
-    
+    <servlet>
+        <servlet-name>FilmController</servlet-name>
+        <servlet-class>controller.FilmController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FilmController</servlet-name>
+        <url-pattern>/client/detailfilmcontroller</url-pattern>
+    </servlet-mapping>
 </web-app>

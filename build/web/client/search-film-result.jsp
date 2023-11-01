@@ -24,40 +24,55 @@
     <body>
         <div class="header">
             <div class="logo">
-                <a href="/isystem/client/home.jsp"> <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo"> </a>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo">
             </div>
             <div class="navigation">
                 <ul class="list">
-                    <li class="list-header"><a href="#" class="list-header_link">Trang chủ</a></li>
-                    <li class="list-header">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                                    data-bs-toggle="dropdown" aria-expanded="false"
-                                    style="background-color: rgb(19, 18, 18); border: none; margin-top: -6px;">
-                                Thể loại phim
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2"
-                                style="border-right: 10px;">
-                                <li style="margin: 0;"><a class="dropdown-item active" href="#">Phim bộ</a></li>
-                                <li style="margin: 0;"><a class="dropdown-item" href="#">Phim hành động</a></li>
-                                <li style="margin: 0;"><a class="dropdown-item" href="#">Phim tình cảm</a></li>
-                                <li style="margin: 0;"><a class="dropdown-item" href="#">Phim 18+</a></li>
-                                <li style="margin: 0;"><a class="dropdown-item" href="#">Phim mới cập nhật</a></li>
-
-                            </ul>
-                        </div>
-                    </li>
-
+                    <li class="list-header"><a href="home.jsp" class="list-header_link">Trang chủ</a></li>
+                    
                     <li class="list-header">
                         <a href="#" id="search_film">
                             <i class="fa-solid fa-magnifying-glass" style="color: aliceblue;"></i>
 
                             <div class="search_film-list" id="search_form">
-                                <form action="..client/searchfilmcontroller" method="get">
-                                    <input type="text" name="" id="search_form_name" placeholder="Nh?p Tên Phim">
+                                <form action="searchfilmcontroller" method="get">
+                                    <input type="text" name="name" id="search_form_name" placeholder="Nhập Tên Phim">
                                 </form>
                             </div>
                         </a>
+                    </li>
+                    <li class="list-header filter" style="position: relative; ">
+                        <div class="list-header_link">Lọc phim</div>
+                        <div class="filter-body" >
+                            <div class="filter-film">
+                                <ul>
+                                    <li><a href="../client/filterfilmcontroller?tag=phim+mỹ"> Phim mỹ</a> </li>
+                                    <li><a href="../client/filterfilmcontroller?tag=phim+hồng+kong"> Phim hồng kong</a></li>
+                                    <li><a href="../client/filterfilmcontroller?tag=phim+nhật"> Phim nhật</a> </li>
+                                    <li><a href="../client/filterfilmcontroller?tag=phim+việt"> Phim việt</a> </li>
+                                </ul>
+                                <ul>
+                                    <li><a href="../client/filterfilmcontroller?tag=phim+hành+động"> Phim hành động </a>  </li>
+                                    <li><a href="../client/filterfilmcontroller?tag=phim+tình+cảm"> Phim tình cảm</a>  </li>
+                                    <li><a href="../client/filterfilmcontroller?tag=phim+kinh+dị"> Phim kinh dị</a>  </li>
+                                    <li><a href="../client/filterfilmcontroller?tag=phim+hoạt+hình"> Phim hoạt hình</a>  </li>
+                                </ul>
+                                <ul>
+                                    <li><a href="../client/filterfilmcontroller?tag=phim+âm+nhạc"> Phim âm nhạc</a>  </li>
+                                    <li><a href="../client/filterfilmcontroller?tag=phim+khoa+học+VT"> Phim khoa  học VT</a>  </li>
+                                    <li><a href="../client/filterfilmcontroller?tag=phim+tâm+lý"> Phim tâm lý</a>  </li>
+                                    <li><a href="../client/filterfilmcontroller?tag=phim+gia+đình"> Phim gia đình</a>  </li>
+                                </ul>
+                                <ul>
+                                    <li><a href="../client/filterfilmcontroller?tag=TV+show"> TV show</a> </li>
+                                    <li><a href="../client/filterfilmcontroller?tag=phim+dài+tập"> Phim dài tập</a>  </li>
+                                    <li><a href="../client/filterfilmcontroller?tag=phim+chiếu+rạp"> Phim chiếu rạp</a>  </li>
+                                    <li><a href="../client/filterfilmcontroller?tag=phim+võ+thuật"> Phim võ thuật</a>  </li>
+                                </ul>
+
+                            </div>
+                        </div>
+
                     </li>
                     <li class="list-header"><a href="login.html" class="list-header_link">Đăng nhập</a></li>
                     <!-- <input type="search" name="search" id="" placeholder="find your film"> -->
@@ -69,10 +84,10 @@
                 <div class="containner-menu" style="width: 15%;">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="#">Phim mới</a>
-                        <a href="#">Phim hành động</a>
-                        <a href="#">Phim 18+</a>
-                        <a href="#">Phim tình cảm</a>
+                        <a href="../client/filterfilmcontroller?tag=phim+hoạt+hình">Phim hoạt hình</a>
+                        <a href="../client/filterfilmcontroller?tag=phim+hành+động">Phim hành động</a>
+                        <a href="../client/filterfilmcontroller?tag=phim+hay">Phim hay</a>
+                        <a href="../client/filterfilmcontroller?tag=phim+tình+cảm">Phim tình cảm</a>
                     </div>
 
                     <span style="font-size:30px;cursor:pointer ; margin-left: 10px;" onclick="openNav()">&#9776;
@@ -82,12 +97,13 @@
                     <div class="grid-column" style=" display: flex;">
                         <div class="film-sreach-result" style="width: 70%;">
                             <div class="film--header">
-                                <div class="film-type" style=" font-weight: 600;">Kết quả tìm kiếm :
+                                <div class="film-type" style=" font-weight: 600;">Có ${size} bộ phim chứa từ khóa "${name}":
                                 </div>
+
                             </div>
                             <div class="grid_row">
                                 <c:forEach var="film" items="${film}">
-                                    <a href="detail-film.jsp" style="width: 23%;" class="poster--film">
+                                    <a href="../client/detailfilmcontroller?id=${film.id}" style="width: 23%;" class="poster--film">
                                         <div class="poster--film__img">
                                             <img src=" ${film.imglink}" alt=""
                                                  style="width: 140px;">
@@ -111,10 +127,10 @@
                                     </div>
                                 </c:forEach>
                             </div>
-                            
+
                         </div>
                         <div class="film-search-relate" style="width: 20%; margin: 15px;">
-                            phim liên quan
+                            
                         </div>
                     </div>
                 </div>
@@ -137,7 +153,31 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-        
+        <script>
+                        var search = document.getElementById("search_film");
+                        var search_form = document.getElementById("search_form");
+                        var search_form_name = document.getElementById("search_form_name");
+                        search.addEventListener("click", function () {
+                            if (search_form.style.display === "none") {
+                                search_form.style.display = "block";
+                            } else {
+                                search_form.style.display = "block";
+                            }
+                        });
+                        search_form_name.addEventListener("blur", function () {
+                            console.log("blur");
+                            search_form.style.display = "none";
+                        });
+                        function openNav() {
+                            console.log("open");
+                            document.getElementById("mySidenav").style.width = "220px";
+                        }
+
+                        function closeNav() {
+                            document.getElementById("mySidenav").style.width = "0";
+                        }
+        </script>
+
 
     </boby>
 

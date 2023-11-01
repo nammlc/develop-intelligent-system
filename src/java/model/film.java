@@ -4,39 +4,47 @@
  */
 package model;
 
+import java.sql.Timestamp;
+
 /**
  *
  * @author Admin
  */
 public class film {
-    public String name, describee,imglink,videolink,label,filmtype;
-    public int timeremain,filmID;
-    
-    public film(int filmID, String name, String describee, String imglink, String videolink, int timeremain, String label, String filmtype){
-        this.filmID = filmID;
+    public String name, des,imglink,videolink,label,filmtype,tag;
+    public int timeremain,id;
+    Timestamp timecre;
+
+    public film(int id, String name, String des, String imglink, String videolink, String tag, int timeremain, String filmtype, String label, Timestamp timecre){
+        this.id = id;
         this.name = name;
-        this.describee = describee;
+        this.des = des;
         this.imglink = imglink;
         this.videolink = videolink;
+        this.tag = tag; 
         this.timeremain = timeremain;
-        this.label = label;
         this.filmtype = filmtype;
+        this.label = label;
+        this.timecre = timecre;
     }
     
-    public int getFilmID(){
-        return filmID;
+    public int getId(){
+        return id;
     }
     public String getName(){
         return name;
     }
-    public String getDescribe(){
-        return describee;
+    public String getDes(){
+        return des;
     }
     public String getImglink(){
         return imglink;
     }
     public String getVideolink(){
         return videolink;
+    }
+    public String getTag(){
+        return tag;
     }
     public int getTimeremain(){
         return timeremain;
@@ -46,6 +54,9 @@ public class film {
     }
     public String getFilmtype(){
      return filmtype;
+    }
+    public Timestamp getTimecre(){
+        return timecre;
     }
 }
 

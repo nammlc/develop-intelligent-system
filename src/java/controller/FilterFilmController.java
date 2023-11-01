@@ -4,23 +4,21 @@
  */
 package controller;
 
-import dao.labelDAO;
+import dao.filmDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.label;
+import model.film;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "SearchLabel", urlPatterns = {"/searchlabel"})
-public class SearchLabel extends HttpServlet {
+public class FilterFilmController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +37,10 @@ public class SearchLabel extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SearchLabel</title>");            
+            out.println("<title>Servlet FilterFilmController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SearchLabel at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet FilterFilmController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,13 +58,12 @@ public class SearchLabel extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = request.getParameter("name");
-        List<label> list = labelDAO.searchLabels(name);
-        int size = list.size();
-        request.setAttribute("size",size);
-        request.setAttribute("key", name);
-        request.setAttribute("label",list);
-        request.getRequestDispatcher("search-label-result.jsp").forward(request, response);
+        String tag = request.getParameter("tag");
+        List<film> list = filmDAO.filterFilms(tag);
+        request.setAttribute("film",list);
+        request.setAttribute("size",list.size());
+        request.setAttribute("tag",tag);
+        request.getRequestDispatcher("filter-film-result.jsp").forward(request, response);
     }
 
     /**
@@ -80,7 +77,8 @@ public class SearchLabel extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        
     }
 
     /**

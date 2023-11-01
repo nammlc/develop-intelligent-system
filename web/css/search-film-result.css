@@ -249,3 +249,54 @@ body {
 .film-search-relate{
 
 }
+
+.filter-body{
+    position: absolute;
+    width: 650px;
+    right: 0;
+    top: 30px;
+    padding: 10px;
+    z-index: 1;
+    background-color: #2d2a2a;
+    color: black;
+    border-radius: 5px;
+    display: none;
+}
+
+.filter:hover .filter-body
+{
+    display: block;
+}
+
+.filter-film{
+    display: flex;
+}
+
+.filter-film ul{
+    padding-right: 0px;
+}
+
+.film-search-relate-name{
+
+}
+
+.film-search-relate-list a{
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 10px;
+    
+}
+
+.film-search-relate_body{
+    display: flex;
+    margin-top: 20px;
+}
+
+.film-search-relate-list_img img{
+    width: 100px;
+    height: 140px;
+}
+
+.film-search-relate-list_name{
+    margin-left: 10px;
+}

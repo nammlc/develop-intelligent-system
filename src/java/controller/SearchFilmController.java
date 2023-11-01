@@ -63,6 +63,9 @@ public class SearchFilmController extends HttpServlet {
             String name = request.getParameter("name");
             filmDAO film = new filmDAO();
             List<film> list = film.searchFilms(name);
+            request.setAttribute("name", name);
+            int size = list.size();
+            request.setAttribute("size", size);
             request.setAttribute("film", list);
             request.getRequestDispatcher("search-film-result.jsp").forward(request, response);
     }

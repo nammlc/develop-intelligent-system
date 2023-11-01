@@ -30,6 +30,7 @@
                 <ul class="list">
                     <li class="list-header"><a href="home.jsp" class="list-header_link">Trang chủ</a></li>
                     
+
                     <li class="list-header">
                         <a href="#" id="search_film">
                             <i class="fa-solid fa-magnifying-glass" style="color: aliceblue;"></i>
@@ -84,6 +85,7 @@
                 <div class="containner-menu" style="width: 15%;">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        
                         <a href="../client/filterfilmcontroller?tag=phim+hoạt+hình">Phim hoạt hình</a>
                         <a href="../client/filterfilmcontroller?tag=phim+hành+động">Phim hành động</a>
                         <a href="../client/filterfilmcontroller?tag=phim+hay">Phim hay</a>
@@ -97,7 +99,7 @@
                     <div class="grid-column" style=" display: flex;">
                         <div class="film-sreach-result" style="width: 70%;">
                             <div class="film--header">
-                                <div class="film-type" style=" font-weight: 600;">Có ${size} bộ phim chứa từ khóa "${name}":
+                                <div class="film-type" style=" font-weight: 600;">Có ${size} bộ phim là thể loại "${tag}":
                                 </div>
 
                             </div>
@@ -130,7 +132,7 @@
 
                         </div>
                         <div class="film-search-relate" style="width: 20%; margin: 15px;">
-                            
+                           
                         </div>
                     </div>
                 </div>
@@ -177,7 +179,6 @@
                             document.getElementById("mySidenav").style.width = "0";
                         }
         </script>
-
 
     </boby>
 

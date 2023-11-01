@@ -7,11 +7,13 @@ package controller;
 import dao.filmDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.film;
 
 /**
  *
@@ -37,7 +39,7 @@ public class FilmController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet FilmController</title>");            
+            out.println("<title>Servlet FilmController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet FilmController at " + request.getContextPath() + "</h1>");
@@ -58,7 +60,15 @@ public class FilmController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String id = request.getParameter("id");
         
+        
+        film Film = filmDAO.getFilm(Integer.parseInt(id));
+        int h = Film.timeremain / 60, m = Film.timeremain % 60;
+        request.setAttribute("film", Film);
+        request.setAttribute("h", h);
+        request.setAttribute("m", m);
+        request.getRequestDispatcher("detail-film.jsp").forward(request, response);
     }
 
     /**

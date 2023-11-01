@@ -30,9 +30,11 @@ body {
     display: flex;
 }
 
-.list-header{
+.list-header, .list-header a{
     margin-top: 20px;
+    color:#fff;
 }
+
 
 .navigation ul li {
     margin-right: 20px;
@@ -123,4 +125,33 @@ main {
 .film-describe{
     
     
+}
+.filter-body{
+    position: absolute;
+    width: 650px;
+    right: 0;
+    top: 30px;
+    padding: 10px;
+    z-index: 1;
+    background-color: #2d2a2a;
+    color: black;
+    border-radius: 5px;
+    display: none;
+}
+
+.filter:hover .filter-body
+{
+    display: block;
+}
+
+.filter-film{
+    display: flex;
+}
+
+.filter-film ul{
+    padding-right: 0px;
+}
+
+ .filter-film a{
+    color: #fff;
 }

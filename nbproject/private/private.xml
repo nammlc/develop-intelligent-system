@@ -3,8 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/F:/DevelopIntelligentSystem/src/java/controller/FilterFilmController.java</file>
             <file>file:/F:/DevelopIntelligentSystem/web/client/display.jsp</file>
-            <file>file:/F:/DevelopIntelligentSystem/web/client/home.html</file>
             <file>file:/F:/DevelopIntelligentSystem/web/client/search-label-result.jsp</file>
             <file>file:/F:/DevelopIntelligentSystem/web/css/home.css</file>
             <file>file:/F:/DevelopIntelligentSystem/src/java/controller/EditLabelController.java</file>
@@ -15,7 +15,9 @@
             <file>file:/F:/DevelopIntelligentSystem/web/client/home.jsp</file>
             <file>file:/F:/DevelopIntelligentSystem/src/java/model/user.java</file>
             <file>file:/F:/DevelopIntelligentSystem/web/client/detail-film.jsp</file>
+            <file>file:/F:/DevelopIntelligentSystem/src/java/controller/LoginController.java</file>
             <file>file:/F:/DevelopIntelligentSystem/src/java/dao/filmDAO.java</file>
+            <file>file:/F:/DevelopIntelligentSystem/web/client/filter-film-result.jsp</file>
             <file>file:/F:/DevelopIntelligentSystem/src/java/controller/SearchFilmController.java</file>
             <file>file:/F:/DevelopIntelligentSystem/web/client/login.html</file>
             <file>file:/F:/DevelopIntelligentSystem/web/client/search-film-result.jsp</file>
@@ -31,6 +33,7 @@
             <file>file:/F:/DevelopIntelligentSystem/src/java/controller/DeleteLabelController.java</file>
             <file>file:/F:/DevelopIntelligentSystem/web/client/detail-label.jsp</file>
             <file>file:/F:/DevelopIntelligentSystem/src/java/dao/userDAO.java</file>
+            <file>file:/F:/DevelopIntelligentSystem/web/css/detail-film.css</file>
             <file>file:/F:/DevelopIntelligentSystem/web/css/add-label.css</file>
             <file>file:/F:/DevelopIntelligentSystem/src/java/model/label.java</file>
             <file>file:/F:/DevelopIntelligentSystem/web/WEB-INF/web.xml</file>

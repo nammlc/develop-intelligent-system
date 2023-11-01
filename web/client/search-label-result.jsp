@@ -141,7 +141,8 @@
                 <div class="label--list__name">
                     <a href="add-label.jsp" style="margin-bottom: 10px"> Thêm nhãn</a>
                   
-                    <h2>Kết quả tìm kiếm theo từ khóa "${key}"</h2>
+                    
+                    <h2>Có ${size} kết quả tìm được theo từ khóa "${key}"</h2>
                 </div>
                 <div class="label--list__icon-search">
                     <a title="Tìm nhãn theo tên" style="display:flex"  >
