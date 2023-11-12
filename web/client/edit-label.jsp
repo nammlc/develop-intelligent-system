@@ -140,7 +140,7 @@
                     <div style="margin:0 0 20px 110px ; font-size: 1.4rem"> Sửa nhãn "${label.getName()}" </div>
                     <form action="../client/editlabelcontroller" method="post" class="form-style">
                         <label for="labelID"> ID của nhãn </label> 
-                        <input type="text" name="labelID" value="${label.getLabelID()}">
+                        <input type="text" name="labelID" value="${label.getLabelID()}" readonly>
                         <label for="name"> Tên nhãn </label> 
                         <input type="text" name="name" value="${label.getName()}">
                         <label for="des"> Mô tả </label> 
@@ -149,7 +149,7 @@
                         
                         <label for="daycreate">Ngày tạo </label> 
 
-                        <input type="text" name="daycreate" value="${label.getDaycreate()}">
+                        <input type="text" name="daycreate" value="${label.getDaycreate()}" readonly>
 
                         <button type="submit">Submit</button>
                     </form>

@@ -4,19 +4,21 @@
  */
 package controller;
 
+import dao.userDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/logincontroller"})
 public class LoginController extends HttpServlet {
 
     /**
@@ -36,7 +38,7 @@ public class LoginController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginController</title>");            
+            out.println("<title>Servlet LoginController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LoginController at " + request.getContextPath() + "</h1>");
@@ -57,7 +59,18 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String username = request.getParameter("username");
+        String passwd = request.getParameter("passwd");
+        String err = "Không tìm thấy tài khoản !";
+        if (userDAO.checkUser(username, encode(passwd)) == true) {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("username", username);
+            request.getRequestDispatcher("home.jsp").forward(request, response);
+        } else {
+            
+            request.setAttribute("err", err);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
     }
 
     /**
@@ -71,14 +84,51 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String fullname = request.getParameter("fullname");
+        String phonenum = request.getParameter("phonenum");
+        String email = request.getParameter("email");
+        String passwd = request.getParameter("passwd");
+        String username = request.getParameter("username");
+        String dob = request.getParameter("dob");
+        String err1 = "Tên tài khoản đã tồn tại!";
+        String err2 = "Email đã được đăng ký!";
+        String err3 = "Số điện thoại đã được đăng ký!";
+        if (userDAO.isUserName(username)==true) {
+            request.setAttribute("err", err1);
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
+        }
+        else if(userDAO.isUserEmail(email)==true) {
+            request.setAttribute("err", err2);
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
+        }
+        else if(userDAO.isUserPhone(phonenum)) {
+            request.setAttribute("err", err3);
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
+        }
+        
+        else {
+            userDAO.addUser(fullname, phonenum, email, username, encode(passwd), java.sql.Date.valueOf(dob));
+            response.sendRedirect("login.jsp");
+        }
+
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    private String encode(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] inputBytes = password.getBytes();
+            byte[] hashBytes = md.digest(inputBytes);
+            StringBuilder sb = new StringBuilder();
+            for (byte i : hashBytes) {
+                sb.append(String.format("%02x", i));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @Override
     public String getServletInfo() {
         return "Short description";

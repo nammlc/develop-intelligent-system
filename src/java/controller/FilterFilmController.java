@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.film;
 
 /**
@@ -63,6 +64,10 @@ public class FilterFilmController extends HttpServlet {
         request.setAttribute("film",list);
         request.setAttribute("size",list.size());
         request.setAttribute("tag",tag);
+        HttpSession session = request.getSession();
+        if (session.getAttribute("username") != null) {
+           String username = session.getAttribute("username").toString(); 
+        }
         request.getRequestDispatcher("filter-film-result.jsp").forward(request, response);
     }
 

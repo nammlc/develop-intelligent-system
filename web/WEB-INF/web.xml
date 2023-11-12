@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
     <welcome-file-list>
-        <welcome-file>home.jsp</welcome-file>
+        <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
     <servlet>
         <servlet-name>SearchLabel</servlet-name>
@@ -10,6 +10,14 @@
     <servlet>
         <servlet-name>FilterFilmController</servlet-name>
         <servlet-class>controller.FilterFilmController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>controller.LoginController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>controller.LogoutController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddLabelController</servlet-name>
@@ -22,6 +30,14 @@
     <servlet-mapping>
         <servlet-name>FilterFilmController</servlet-name>
         <url-pattern>/client/filterfilmcontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/client/LoginController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/client/LogoutController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

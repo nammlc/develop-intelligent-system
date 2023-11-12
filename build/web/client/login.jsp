@@ -1,3 +1,11 @@
+<%-- 
+    Document   : login.jsp
+    Created on : Nov 10, 2023, 12:56:19 AM
+    Author     : Admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,19 +25,20 @@
         
         <div class="background-container"></div>
         <div class="logo">
-            <a href="home.html"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo"></a>
+            <a href="home.jsp"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo"></a>
           </div>
         <div class="login-container">         
             <div class="form-container">
                 <h1 class="opacity">Login</h1>
-                <form>
-                    <input type="text" placeholder="USERNAME" />
-                    <input type="password" placeholder="PASSWORD" />
+                <form action="../client/LoginController" method="get">
+                    <input type="text" placeholder="USERNAME" name="username">
+                    <input type="password" placeholder="PASSWORD" name="passwd">
                     <button class="opacity">Login</button>
                 </form>
+                <h1 class="opacity" style="font-size: 1rem; text-align: center">${err} </h1>
                 <div class="register-forget opacity">
-                    <h1 style="font-size: 1rem;">New User ? <a href="signup.html" >Sign Up Here</a></h1>
-                    <h1 style="font-size: 1rem;"><a href="">Forget password</a></h1>
+                    <h1 style="font-size: 1rem;">New User ? <a href="signup.jsp" >Sign Up Here</a></h1>
+                    <h1 style="font-size: 1rem;"><a href="forget-passwd.jsp">Forget password</a></h1>
                 </div>
             </div>
         </div>
@@ -38,4 +47,4 @@
 
 </body>
 
-</html>s
+</html>

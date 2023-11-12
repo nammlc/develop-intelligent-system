@@ -1,9 +1,9 @@
 <%@page import="dao.filmDAO"%>
 <%@page import="model.film"%>
+
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="vi">
@@ -28,9 +28,9 @@
             </div>
             <div class="navigation">
                 <ul class="list">
-                    <li class="list-header"><a href="home.jsp" class="list-header_link">Trang chủ</a></li>
-                    
-                    <li class="list-header">
+                    <li class="list-header" style="margin-top: 26px"><a href="home.jsp" class="list-header_link">Trang chủ</a></li>
+
+                    <li class="list-header" style="margin-top: 26px">
                         <a href="#" id="search_film">
                             <i class="fa-solid fa-magnifying-glass" style="color: aliceblue;"></i>
 
@@ -41,7 +41,7 @@
                             </div>
                         </a>
                     </li>
-                    <li class="list-header filter" style="position: relative; ">
+                    <li class="list-header filter" style="position: relative; margin-top: 26px">
                         <div class="list-header_link">Lọc phim</div>
                         <div class="filter-body" >
                             <div class="filter-film">
@@ -74,8 +74,20 @@
                         </div>
 
                     </li>
-                    <li class="list-header"><a href="login.html" class="list-header_link">Đăng nhập</a></li>
-                    <!-- <input type="search" name="search" id="" placeholder="find your film"> -->
+                    <% if (session.getAttribute("username") != null) {%>
+                    <li class="list-header filter" ><div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #111; border: none; padding:none">
+                              Welcome,  <%= session.getAttribute("username") %> !
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="background: #111">
+                                <li style="margin: 0"> <a class="dropdown-item" href="personal-page.jsp">Trang cá nhân</a></li>
+                                
+                                <li style="margin: 0"><a class="dropdown-item" href="../client/LogoutController">Đăng xuất</a></li>
+                            </ul>
+                        </div></li>
+                        <% } else { %>
+                    <li class="list-header" style="margin-top: 26px"><a href="login.jsp" class="list-header_link">Đăng nhập</a></li>
+                        <% } %>
                 </ul>
             </div>
         </div>
@@ -130,7 +142,7 @@
 
                         </div>
                         <div class="film-search-relate" style="width: 20%; margin: 15px;">
-                            
+
                         </div>
                     </div>
                 </div>

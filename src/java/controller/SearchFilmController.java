@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,7 +40,7 @@ public class SearchFilmController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SearchFilmController</title>");            
+            out.println("<title>Servlet SearchFilmController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet SearchFilmController at " + request.getContextPath() + "</h1>");
@@ -60,14 +61,21 @@ public class SearchFilmController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String name = request.getParameter("name");
-            filmDAO film = new filmDAO();
-            List<film> list = film.searchFilms(name);
-            request.setAttribute("name", name);
-            int size = list.size();
-            request.setAttribute("size", size);
-            request.setAttribute("film", list);
-            request.getRequestDispatcher("search-film-result.jsp").forward(request, response);
+        String name = request.getParameter("name");
+        String ses = "have session";
+        filmDAO film = new filmDAO();
+        List<film> list = film.searchFilms(name);
+        request.setAttribute("name", name);
+        int size = list.size();
+        request.setAttribute("size", size);
+        request.setAttribute("film", list);
+
+        HttpSession session = request.getSession();
+        if (session.getAttribute("username") != null) {
+           String username = session.getAttribute("username").toString(); 
+        }
+        
+        request.getRequestDispatcher("search-film-result.jsp").forward(request, response);
     }
 
     /**

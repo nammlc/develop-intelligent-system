@@ -5,11 +5,11 @@
         <group>
             <file>file:/F:/DevelopIntelligentSystem/src/java/controller/FilterFilmController.java</file>
             <file>file:/F:/DevelopIntelligentSystem/web/client/display.jsp</file>
+            <file>file:/F:/DevelopIntelligentSystem/web/client/login.jsp</file>
             <file>file:/F:/DevelopIntelligentSystem/web/client/search-label-result.jsp</file>
             <file>file:/F:/DevelopIntelligentSystem/web/css/home.css</file>
             <file>file:/F:/DevelopIntelligentSystem/src/java/controller/EditLabelController.java</file>
             <file>file:/F:/DevelopIntelligentSystem/src/java/controller/AddLabelController.java</file>
-            <file>file:/F:/DevelopIntelligentSystem/web/client/signup.html</file>
             <file>file:/F:/DevelopIntelligentSystem/web/js/login.js</file>
             <file>file:/F:/DevelopIntelligentSystem/web/client/new-film.jsp</file>
             <file>file:/F:/DevelopIntelligentSystem/web/client/home.jsp</file>
@@ -19,21 +19,24 @@
             <file>file:/F:/DevelopIntelligentSystem/src/java/dao/filmDAO.java</file>
             <file>file:/F:/DevelopIntelligentSystem/web/client/filter-film-result.jsp</file>
             <file>file:/F:/DevelopIntelligentSystem/src/java/controller/SearchFilmController.java</file>
-            <file>file:/F:/DevelopIntelligentSystem/web/client/login.html</file>
+            <file>file:/F:/DevelopIntelligentSystem/web/client/signup.jsp</file>
             <file>file:/F:/DevelopIntelligentSystem/web/client/search-film-result.jsp</file>
             <file>file:/F:/DevelopIntelligentSystem/src/java/controller/SelectLabelController.java</file>
             <file>file:/F:/DevelopIntelligentSystem/web/client/edit-label.jsp</file>
+            <file>file:/F:/DevelopIntelligentSystem/web/css/signup.css</file>
             <file>file:/F:/DevelopIntelligentSystem/src/java/dao/labelDAO.java</file>
             <file>file:/F:/DevelopIntelligentSystem/src/java/controller/FilmController.java</file>
             <file>file:/F:/DevelopIntelligentSystem/web/client/admin.jsp</file>
             <file>file:/F:/DevelopIntelligentSystem/web/css/login.css</file>
             <file>file:/F:/DevelopIntelligentSystem/web/css/main.css</file>
+            <file>file:/F:/DevelopIntelligentSystem/src/java/userDAO.java</file>
             <file>file:/F:/DevelopIntelligentSystem/web/css/search-film-result.css</file>
             <file>file:/F:/DevelopIntelligentSystem/web/client/add-label.jsp</file>
             <file>file:/F:/DevelopIntelligentSystem/src/java/controller/DeleteLabelController.java</file>
             <file>file:/F:/DevelopIntelligentSystem/web/client/detail-label.jsp</file>
             <file>file:/F:/DevelopIntelligentSystem/src/java/dao/userDAO.java</file>
             <file>file:/F:/DevelopIntelligentSystem/web/css/detail-film.css</file>
+            <file>file:/F:/DevelopIntelligentSystem/src/java/controller/LogoutController.java</file>
             <file>file:/F:/DevelopIntelligentSystem/web/css/add-label.css</file>
             <file>file:/F:/DevelopIntelligentSystem/src/java/model/label.java</file>
             <file>file:/F:/DevelopIntelligentSystem/web/WEB-INF/web.xml</file>

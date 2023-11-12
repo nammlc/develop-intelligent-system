@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="model.label"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page import="dao.labelDAO" %>
@@ -140,8 +141,10 @@
             <div class="label--list-header">
                 <div class="label--list__name">
                     <a href="add-label.jsp" style="margin-bottom: 10px"> Thêm nhãn</a>
-                  
-                    <h2>Danh sách nhãn</h2>
+                  <% List<label> list = labelDAO.getAllLabels();
+                  request.setAttribute("size",list.size());
+                  %>
+                    <h2>Danh sách nhãn : ${size} nhãn</h2>
                 </div>
                 <div class="label--list__icon-search">
                     <a title="Tìm nhãn theo tên" style="display:flex"  >
