@@ -12,16 +12,24 @@ import java.util.Date;
  */
 public class user {
 
+    public int user_id;
     public String username, passwd, fullname, phonenum, email;
     public Date dob;
+    public int age;
 
-    public user(String name, String passwd, String fullname, String phonenum, String email, Date dob) {
-        this.username = name;
-        this.passwd = passwd;
+    public user(int user_id, String fullname, String phonenum, String email, String passwd, String username, int age, Date dob) {
+        this.user_id = user_id;
         this.fullname = fullname;
-        this.email = email;
         this.phonenum = phonenum;
+        this.email = email;
+        this.passwd = passwd;
+        this.username = username;
+        this.age = age;
         this.dob = dob;
+    }
+
+    public int getUserid() {
+        return user_id;
     }
 
     public String getUsername() {
@@ -42,6 +50,10 @@ public class user {
 
     public String getPhonenum() {
         return phonenum;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     public Date getDob() {

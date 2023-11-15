@@ -78,7 +78,7 @@
                     <% if (session.getAttribute("username") != null) {%>
                     <li class="list-header filter" ><div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #111; border: none; padding:none">
-                              Welcome,  <%= session.getAttribute("username") %> !
+                              Welcome, ${ username}  !
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="background: #111">
                                 <li style="margin: 0"> <a class="dropdown-item" href="personal-page.jsp">Trang cá nhân</a></li>

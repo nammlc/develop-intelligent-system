@@ -73,64 +73,108 @@ public class userDAO {
 
     public static boolean isUserName(String username) {
         try (Connection c = openConnection()) {
-            String query = "select * from user where username=? ";           
+            String query = "select * from user where username=? ";
+            PreparedStatement ps = c.prepareStatement(query);
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean isUserEmail(String email) {
+        try (Connection c = openConnection()) {
+            String query = "select * from user where email=? ";
+            PreparedStatement ps = c.prepareStatement(query);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean isUserPhone(String phonenum) {
+        try (Connection c = openConnection()) {
+            String query = "select * from user where phonenum=? ";
+            PreparedStatement ps = c.prepareStatement(query);
+            ps.setString(1, phonenum);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public static user getUser(String username){
+        try (Connection c = openConnection()) {
+            String query = "select * from user where username = ?";
             PreparedStatement ps = c.prepareStatement(query);
             ps.setString(1,username);
             ResultSet rs = ps.executeQuery();
-            return rs.next();
-        } catch (Exception e) {
+            if(rs.next()){
+                int  id = rs.getInt("user_id");
+                String fullname = rs.getString("fullname");
+                String phonenum = rs.getString("phonenum");
+                String email = rs.getString("email");
+                String passwd = rs.getString("passwd");
+                String usernamee = rs.getString("username");
+                int age = rs.getInt("age");
+                Date dob = rs.getDate("dob");
+                user User = new user(id,fullname,phonenum,email,passwd,username,age,dob);
+                return User;
+            }
+            
+            
+        }
+        catch(Exception e){
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
-    public static boolean isUserEmail(String email) {
-        try (Connection c = openConnection()) {
-            String query = "select * from user where email=? ";           
+    public static boolean editUser(String username,String fullname,Date dob){
+        try(Connection c = openConnection()){
+            String query = "UPDATE  user set fullname = ?, dob = ?   WHERE username = ?";
             PreparedStatement ps = c.prepareStatement(query);
-            ps.setString(1,email);
-            ResultSet rs = ps.executeQuery();
-            return rs.next();
-        } catch (Exception e) {
+            ps.setString(1, fullname);
+            ps.setDate(2, dob);
+            ps.setString(3, username);
+            ps.executeUpdate();
+            return true;
+        }
+        catch(Exception e){
             e.printStackTrace();
         }
         return false;
     }
-    public static boolean isUserPhone(String phonenum) {
-        try (Connection c = openConnection()) {
-            String query = "select * from user where phonenum=? ";           
-            PreparedStatement ps = c.prepareStatement(query);
-            ps.setString(1,phonenum);
-            ResultSet rs = ps.executeQuery();
-            return rs.next();
-        } catch (Exception e) {
-            e.printStackTrace();
+
+    public static String generateRandomCode() {
+        // Chiều dài của mã xác nhận
+        int codeLength = 6;
+
+        // Ký tự cho mã xác nhận (có thể sử dụng số và chữ cái)
+        String characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        StringBuilder randomCode = new StringBuilder(codeLength);
+
+        // Tạo mã xác nhận ngẫu nhiên bằng cách chọn ký tự từ chuỗi characters
+        Random random = new Random();
+        for (int i = 0; i < codeLength; i++) {
+            int index = random.nextInt(characters.length());
+            randomCode.append(characters.charAt(index));
         }
-        return false;
+
+        return randomCode.toString();
     }
-    public String generateRandomCode() {
-    // Chiều dài của mã xác nhận
-    int codeLength = 6;
-
-    // Ký tự cho mã xác nhận (có thể sử dụng số và chữ cái)
-    String characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-    StringBuilder randomCode = new StringBuilder(codeLength);
-
-    // Tạo mã xác nhận ngẫu nhiên bằng cách chọn ký tự từ chuỗi characters
-    Random random = new Random();
-    for (int i = 0; i < codeLength; i++) {
-        int index = random.nextInt(characters.length());
-        randomCode.append(characters.charAt(index));
-    }
-
-    return randomCode.toString();
-}
 
     public static void main(String[] args) {
         userDAO a = new userDAO();
-        boolean bool = a.isUserName("namlcc");
+        boolean bool = a.editUser("namlcc","Lê Công Nam",java.sql.Date.valueOf("2023-11-10"));
         System.out.print(bool);
-        String confirmationCode = a.generateRandomCode();
-        System.err.println(confirmationCode);
+        
+        
     }
 }

@@ -19,6 +19,14 @@
         <servlet-name>LogoutController</servlet-name>
         <servlet-class>controller.LogoutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PersonalPageController</servlet-name>
+        <servlet-class>controller.PersonalPageController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserController</servlet-name>
+        <servlet-class>controller.UserController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddLabelController</servlet-name>
         <url-pattern>/client/addlabelcontroller</url-pattern>
@@ -38,6 +46,14 @@
     <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/client/LogoutController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PersonalPageController</servlet-name>
+        <url-pattern>/client/personalpagecontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserController</servlet-name>
+        <url-pattern>/client/usercontroller</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
